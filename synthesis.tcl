@@ -1,6 +1,6 @@
 #####################################################################################
 # BLOCK NAME    : alu_4bit                                                          #
-# TOOL          : INNOVUS | CADENCE                                                 #
+# TOOL          : GENUS | CADENCE                                                   #
 # DESIGNER      : MAMUNAR RAHOMAN                                                   #
 # VERSION       : 1.0.0                                                             #
 # STAGE         : RTL Synthesis                                                     #
