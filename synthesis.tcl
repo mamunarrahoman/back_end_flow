@@ -1,3 +1,12 @@
+#####################################################################################
+# BLOCK NAME    : alu_4bit                                                          #
+# TOOL          : INNOVUS | CADENCE                                                 #
+# DESIGNER      : MAMUNAR RAHOMAN                                                   #
+# VERSION       : 1.0.0                                                             #
+# STAGE         : RTL Synthesis                                                     #
+# SCRIPT NAME   : synthesis.tcl                                                     #
+#####################################################################################
+
 set_db init_lib_search_path     "pdk/stdcell"
 set_db library                  "slow_vdd1v2_basicCells.lib"
 set_db lef_library              "pdk/stdcell/gsclib045_tech.lef pdk/stdcell/gsclib045_macro.lef"
