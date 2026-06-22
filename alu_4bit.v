@@ -1,4 +1,4 @@
-# 4-bit ALU
+// 4-bit ALU
 
 module alu_4bit(A,B,Y,clk,Opcode);
 	input [3:0]A,B;
