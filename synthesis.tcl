@@ -28,7 +28,7 @@ set_clock_transition -min -fall 0.5 [get_clocks clk]
 set_clock_transition -min -rise 0.5 [get_clocks clk]
 set_clock_transition -max -fall 0.5 [get_clocks clk]
 set_clock_transition -max -rise 0.5 [get_clocks clk]
-set_clock_groups -name original -group [list [get_clocks clk]]
+#set_clock_groups -name original -group [list [get_clocks clk]]
 set DRIVING_CELL BUFX8
 set DRIVE_PIN {Y}
 set_driving_cell -lib_cell $DRIVING_CELL -pin $DRIVE_PIN [all_inputs]
