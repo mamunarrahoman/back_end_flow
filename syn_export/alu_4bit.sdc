@@ -22,7 +22,6 @@ set_load -pin_load 0.5 [get_ports {Y[3]}]
 set_load -pin_load 0.5 [get_ports {Y[2]}]
 set_load -pin_load 0.5 [get_ports {Y[1]}]
 set_load -pin_load 0.5 [get_ports {Y[0]}]
-set_clock_groups -name "original" -group [get_clocks clk]
 set_clock_gating_check -setup 0.0
 set_input_delay -add_delay -max 0.5 [get_ports {A[3]}]
 set_input_delay -add_delay -max 0.5 [get_ports {A[2]}]
