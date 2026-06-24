@@ -1,9 +1,9 @@
 #########################################################################################################
-# Design Name	: alu_4bit										                                                            #
-# Designer Name	: Mamunar Rahoman			                                                      						#
-# Tool		: Cadence Innovus & Cadence Genus						                                                	#
-# Date_of_start	:										                                                                  	#
-# Date_of_End	:										                                                                     	#
+# Design Name	: alu_4bit										#
+# Designer Name	: Mamunar Rahoman									#
+# Tool		: Cadence Innovus & Cadence Genus							#
+# Date_of_start	:											#
+# Date_of_End	:										       	#
 # #######################################################################################################
 
 .PHONY: syn init_design power_design place_design clean
