@@ -1,9 +1,9 @@
 #########################################################################################################
-# Project Name  : alu_4bit                                                                              #
-# Project Version: v1.00.1                                                                              #
-# Design Stage  : POWER PLANNING                                                                        #
-# Script Name   : power.tcl                                                                             #
-# Designer Name : Mamunar Rahoman                                                                       #
+# Project Name	: alu_4bit										#
+# Project Version: v1.00.1										#
+# Design Stage	: POWER PLANNING									#
+# Script Name	: power.tcl										#
+# Designer Name	: Mamunar Rahoman									#
 #########################################################################################################
 
 #Initiate design related variable from config file
@@ -26,15 +26,15 @@ set offset 2
 #Super command for adding power strip in design. [Power mesh configuration]
 for {set i $top_power_net_layer} {$i>=$bottom_power_net_layer} {incr i -1} {
 if {$i%2==0} {
-                set direction vertical
-                set number_of_strip 16
-                set start_point [expr [dbget head.topCells.fplan.coreBox_llx]+$offset]
-                set end_point [expr [dbget head.topCells.fplan.coreBox_urx]-$offset]
-        } else {
-                set direction horizontal
-                set number_of_strip 6
-                set start_point [expr [dbget head.topCells.fplan.coreBox_lly]+$offset]
-                set end_point [expr [dbget head.topCells.fplan.coreBox_ury]-$offset]
+		set direction vertical
+		set number_of_strip 16
+		set start_point [expr [dbget head.topCells.fplan.coreBox_llx]+$offset]
+		set end_point [expr [dbget head.topCells.fplan.coreBox_urx]-$offset]
+	} else {
+		set direction horizontal
+		set number_of_strip 6
+		set start_point [expr [dbget head.topCells.fplan.coreBox_lly]+$offset]
+		set end_point [expr [dbget head.topCells.fplan.coreBox_ury]-$offset]
 }
 addStripe       -nets "$POWER_NET $GROUND_NET" \
                 -layer "Metal$i" \
@@ -54,26 +54,28 @@ addStripe       -nets "$POWER_NET $GROUND_NET" \
                 -block_ring_top_layer_limit $top_power_net_layer \
                 -block_ring_bottom_layer_limit $bottom_power_net_layer \
                 -use_wire_group 0 \
-                -snap_wire_center_to_grid None
+                -snap_wire_center_to_grid None 
 }
 
 #Create power-ground rail by special route
-sroute          -connect { blockPin padPin padRing corePin floatingStripe } \
-                -layerChangeRange "Metal1(1) Metal$bottom_power_net_layer\($bottom_power_net_layer)" \
-                -blockPinTarget { nearestTarget } -padPinPortConnect { allPort oneGeom } \
-                -padPinTarget { nearestTarget } \
-                -corePinTarget { firstAfterRowEnd } \
-                -floatingStripeTarget { blockring padring ring stripe ringpin blockpin followpin } \
-                -allowJogging 0 \
-                -crossoverViaLayerRange { Metal1(1) Metal11(11) } \
-                -nets "$POWER_NET $GROUND_NET" \
-                -allowLayerChange 0 \
-                -blockPin useLef \
-                -targetViaLayerRange { Metal1(1) Metal11(11) }
+sroute 		-connect { blockPin padPin padRing corePin floatingStripe } \
+		-layerChangeRange "Metal1(1) Metal$bottom_power_net_layer\($bottom_power_net_layer)" \
+		-blockPinTarget { nearestTarget } -padPinPortConnect { allPort oneGeom } \
+		-padPinTarget { nearestTarget } \
+		-corePinTarget { firstAfterRowEnd } \
+		-floatingStripeTarget { blockring padring ring stripe ringpin blockpin followpin } \
+		-allowJogging 0 \
+		-crossoverViaLayerRange { Metal1(1) Metal11(11) } \
+		-nets "$POWER_NET $GROUND_NET" \
+		-allowLayerChange 0 \
+		-blockPin useLef \
+		-targetViaLayerRange { Metal1(1) Metal11(11) }
 clearDrc
+
+# Removing Routing blockage
+deleteRouteBlk -all
 
 #Save the design
 saveDesign ./DESIGN/power_design.inn
 
 exit
-
