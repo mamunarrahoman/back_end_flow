@@ -11,7 +11,7 @@ syn :
                 @genus -file ./scripts/synthesis_script.tcl | tee log/sysnthesis.log
                 @touch log/synthesis.pass
 
-init_design : syn
+init_design :
                 @innovus -init ./scripts/init_design.tcl | tee log/init_design.log
                 @touch log/init_design.pass
 power_design : 
